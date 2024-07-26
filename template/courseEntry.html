@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    *{
+      box-sizing: border-box;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+    input[type=submit] {
+      background-color: rgb(250, 139, 20);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #4853f0;
+    }
+
+    .container {
+      margin: 5%;
+      border-radius: 5px;
+      background-color: rgb(88, 226, 254);
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3 style="background-color: rgb(147, 237, 147); color: #01010f;">{{ n }}</h3>
+  <h2 style="text-align: center;"> ENTER COURSE DETAILS </h2>
+  <div class="container">
+    <form method="post" action="{% url "saveCourseDetails" %}">
+      {% csrf_token %}
+      <label for="coursename"> COURSE NAME </label>
+      <input type="text" id="coursename" name="coursename" placeholder="Course name..">
+
+      <label for="duration"> DURATION </label>
+      <input type="text" id="duration" name="duration" placeholder="Course duration ..">
+
+      <label for="fee"> FEE </label>
+      <input type="text" id="fee" name="fee" placeholder="Fee...">
+
+      <label for="avlseats"> AVAILABLE SEATS </label>
+      <input type="text" id="avlseats" name="avlseats" placeholder="AVAILABLE SEATS ..">
+
+
+      <label for="remarks"> REMARKS </label>
+      <textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"></textarea>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+
+</html>
+{% endblock content %}
